@@ -1,23 +1,22 @@
 import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'expo-router'
-import { View, Text, TouchableOpacity, FlatList, ActivityIndicator, Touchable } from 'react-native'
+import { View, Text, TouchableOpacity, ActivityIndicator, FlatList } from 'react-native'
 
 import styles from './popularjobs.style'
 import { COLORS, SIZES } from '../../../constants'
 import PopularJobCard from '../../common/cards/popular/PopularJobCard'
 
 import useFetch from '../../../hooks/useFetch'
+import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard'
 
 const Popularjobs = () => {
   const router = useRouter();
 
-  const {data, isLoading, error} = useFetch('search', {
+  const { data, isLoading, error } = useFetch('search', {
     query: 'React developer',
     num_pages: 1
   });
-
-  console.log(data);
 
   return (
     <View style={styles.container}>
@@ -35,10 +34,10 @@ const Popularjobs = () => {
         ) : (
           <FlatList data={data}
             renderItem={({ item }) => (
-              <PopularJobCard item={item}/>
+              <PopularJobCard item={item} />
             )}
             keyExtractor={item => item?.job_id}
-            contentContainerStyle={{columnGap: SIZES.medium}}
+            contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal />
         )}
       </View>
