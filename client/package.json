@@ -3,5 +3,8 @@
     "axios": "^1.6.8",
     "expo-font": "^11.10.3",
     "react-native-dotenv": "^3.4.11"
+  },
+  "devDependencies": {
+    "metro": "^0.80.8"
   }
 }
